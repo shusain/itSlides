@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg"
     xmlns:xlink="http://www.w3.org/1999/xlink"
-    width="100%" height="25">
+    width="100%" height="45">
 
 
     
@@ -10,7 +10,7 @@
     width="100%"
     height="4"
     x="0"
-    y="8" />
+    y="18" />
     
   <!-- thumb/slider -->
       
@@ -23,14 +23,14 @@
       x="0"
       y="0" 
       width="60"
-      height="20"
+      height="40"
       rx="4"
       ry="4"/>
     
     
     <text 
       class="thumbLabel"
-      x="30" y="15" 
+      x="30" y="25" 
       font-weight="bold"
       font-family="Verdana"
       fill="white"
