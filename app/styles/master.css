@@ -2,6 +2,7 @@
 
 body, html{
   height:100%;
+  margin:0;
 }
 
 /* Just turning off regular text selection for reasonable browsers */
@@ -10,7 +11,14 @@ body{
   -moz-user-select: none;    
   -ms-user-select: none;      
   user-select: none;
-  
+}
+
+h1{
+  margin:0;
+}
+
+.testContainer{
+  padding: 20px;
 }
 
 .thumb {
