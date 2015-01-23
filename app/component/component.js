@@ -39,10 +39,11 @@ angular.module('componentModule', ['component-templates'])
       var track = angular.element(iElem.children()[0]).find("rect")[0];
       var label = angular.element(thumb).find("text")[0];
       var curPos = 0;
+
+
       
       track.addEventListener('click', function(event){
         var trackWidth = track.width.baseVal.value;
-        console.log(event.clientX/trackWidth);
         var value = selectedOpts.min + selectedOpts.max*(event.clientX-30)/trackWidth
         console.log(value);
         setValue(value.toFixed());
@@ -56,8 +57,16 @@ angular.module('componentModule', ['component-templates'])
         }
       });
 
-      var handleMouseMove = function(event){
-        var newPos = thumbStartX+(event.clientX-startX);
+
+      function handleMouseUp(){
+        $document.unbind('mousemove touchmove', handleMouseMove);
+        $document.unbind('mouseup touchend', handleMouseUp);
+      }
+
+      function handleMouseMove(event){
+        commonX = event.clientX || event.changedTouches[0].clientX;
+
+        var newPos = thumbStartX+(commonX-startX);
         if(newPos<0)
           newPos = 0;
           
@@ -70,6 +79,23 @@ angular.module('componentModule', ['component-templates'])
         scope.$evalAsync(read)
         setThumbX(newPos);
       }
+
+      function handleMouseDown(event){
+        thumbStartX = getThumbX();
+        if(isNaN(thumbStartX))
+          thumbStartX =0
+        startX = event.clientX || event.changedTouches[0].clientX;
+        $document.bind('mousemove touchmove', handleMouseMove);
+        $document.bind('mouseup touchend', handleMouseUp);
+        
+        $window.addEventListener('resize', function(){
+          setValue(curPos.toFixed(0));
+        });
+      }
+
+      thumb.addEventListener("mousedown", handleMouseDown);
+      thumb.addEventListener("touchstart", handleMouseDown);
+
       var matrixToArray = function(str){
           return str.match(/(-?[0-9\.]+)/g);
       };
@@ -81,31 +107,12 @@ angular.module('componentModule', ['component-templates'])
       function setThumbX(val){
         thumb.style.transform = "translate("+val+"px)";
       }
-
-
-      scope.handleMouseDown = function(event){
-        thumbStartX = getThumbX();
-        if(isNaN(thumbStartX))
-          thumbStartX =0
-        startX = event.clientX;
-        $document.bind('mousemove', handleMouseMove);
-        $document.bind('mouseup', scope.handleMouseUp);
-        
-        $window.addEventListener('resize', function(){
-          setValue(curPos.toFixed(0));
-        });
-      }
-      
-      
-      scope.handleMouseUp = function(){
-        $document.unbind('mousemove', handleMouseMove);
-      }
       
       function setValue(value){
         var trackWidth = track.width.baseVal.value;
-        var newPos = (value-selectedOpts.min)/selectedOpts.max*trackWidth;
+        var newPos = (value-selectedOpts.min)/selectedOpts.max*(trackWidth-60);
         setThumbX(newPos);
-        label.textContent=value;
+        label.textContent=value.toFixed(0);
         curPos = value;
       }
       
@@ -115,7 +122,7 @@ angular.module('componentModule', ['component-templates'])
 
       // Specify how UI should be updated
       ngModel.$render = function() {
-        setValue(parseInt(ngModel.$viewValue))
+        setValue(parseFloat(ngModel.$viewValue))
       };
 
       read(); // initialize

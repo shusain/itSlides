@@ -13,6 +13,9 @@ body{
   
 }
 
+.thumb {
+  cursor:pointer;
+}
 .thumbButton{
   fill: #040094;
   stroke: #03001F;

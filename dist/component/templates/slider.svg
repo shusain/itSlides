@@ -16,9 +16,7 @@
       
   <g
     class="thumb"
-    style="cursor:pointer; transform:translate(0px)"
-    ng-mousedown="handleMouseDown($event)"
-    ng-mouseup="handleMouseUp($event)">
+    style="transform:translate(0px)">
     
     <rect
       class="thumbButton"
