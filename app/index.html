@@ -26,10 +26,14 @@
 	<!-- BODY -->
 	<body>
 		<h1 style="text-align:center">it slides</h1>
-		{{justatest}}
-		<it-slider ng-model="justatest"></it-slider>
-		<it-slider ng-model="justanothertest"></it-slider>
-		<it-slider ng-model="justanothertest"></it-slider>
+		<div class="testContainer">
+			All by itself {{justatest}}
+			<it-slider ng-model="justatest"></it-slider>
+			Bound to the same model
+			{{justanothertest}}
+			<it-slider ng-model="justanothertest"></it-slider>
+			<it-slider ng-model="justanothertest"></it-slider>
+		</div>
 
 
 		<!-- AngularJS and components thereof -->
