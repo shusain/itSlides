@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg"
+    xmlns:xlink="http://www.w3.org/1999/xlink"
+    width="100%" height="25">
+
+
+    
+  <!-- track -->
+  <rect
+    class="track"
+    width="100%"
+    height="4"
+    x="0"
+    y="8" />
+    
+  <!-- thumb/slider -->
+      
+  <g
+    class="thumb"
+    style="cursor:pointer; transform:translate(0px)"
+    ng-mousedown="handleMouseDown($event)"
+    ng-mouseup="handleMouseUp($event)">
+    
+    <rect
+      class="thumbButton"
+      x="0"
+      y="0" 
+      width="60"
+      height="20"
+      rx="4"
+      ry="4"/>
+    
+    
+    <text 
+      class="thumbLabel"
+      x="30" y="15" 
+      font-weight="bold"
+      font-family="Verdana"
+      fill="white"
+      text-anchor="middle"
+      font-size="14"
+      onclick="event.preventDefault();"
+      onmousedown="event.preventDefault();">
+      0
+    </text>
+  </g>
+</svg>

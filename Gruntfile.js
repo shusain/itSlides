@@ -50,7 +50,7 @@ module.exports = function (grunt) {
           livereload: '<%= connect.options.livereload %>'
         },
         files: [
-          '<%= yeoman.app %>/{,*/}*.html',
+          '<%= yeoman.app %>/{,*/}*.{html,svg}',
           '.tmp/styles/{,*/}*.css',
           '<%= yeoman.app %>/images/{,*/}*.{png,jpg,jpeg,gif,webp,svg}'
         ]
@@ -63,7 +63,7 @@ module.exports = function (grunt) {
         module:"component-templates"
       },
       main: {
-        src: ['app/component/templates/**/*.tpl.html'],
+        src: ['app/component/templates/**/*.{tpl.html,svg}'],
         dest: '.tmp/templates.js'
       },
     },
@@ -264,6 +264,7 @@ module.exports = function (grunt) {
           src: [
             '*.{ico,png,txt}',
             '.htaccess',
+            'component/templates/*.svg',
             '*.html'
           ]
         }, {

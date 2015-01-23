@@ -1,3 +1,24 @@
-h1{
-  text-align: center;
+/* Put your css in here */
+
+body, html{
+  height:100%;
+}
+
+/* Just turning off regular text selection for reasonable browsers */
+body{
+-webkit-user-select: none;  
+  -moz-user-select: none;    
+  -ms-user-select: none;      
+  user-select: none;
+  
+}
+
+.thumbButton{
+  fill: #040094;
+  stroke: #03001F;
+}
+
+.track{
+  cursor:pointer;
+  fill:#ddd;
 }
