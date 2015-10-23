@@ -1,1 +1,1 @@
-angular.module("mainApp",["componentModule"]).controller("TestCtrl",function(a){a.pages=[1,2,3]});
+angular.module("mainApp",["itSlides"]).controller("TestCtrl",function(a){a.pages=[1,2,3]});
