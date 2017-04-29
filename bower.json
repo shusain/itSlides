@@ -1,6 +1,7 @@
 {
   "name": "it-slides-angular",
   "version": "0.0.1",
+  "main": "dist/component-min.js",
   "dependencies": {
     "angular": "~1.2.0-rc.3"
   },
